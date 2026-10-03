@@ -1,69 +1,123 @@
-import Image from "next/image";
-
+import Link from "next/link";
+import { Space } from "@/components/space";
+import { projects } from "@/lib/projects";
 export default function Home() {
+  const [first, second, third] = projects;
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <main id="main">
+      <section className="entrance" aria-labelledby="exhibition-title">
+        <div className="entrance-copy">
+          <p className="quiet-label">An exhibition in progress</p>
+          <h1 id="exhibition-title">Thresholds</h1>
+          <p className="entrance-line">
+            On space,{" "}
+            <br />
+            and the space between.
+          </p>
+          <p className="preview-note">
+            Three spatial studies.{" "}
+            <br />A framework for work yet to be introduced.
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
+        <Link
+          className="entrance-image"
+          href={`/projects/${first.slug}`}
+          aria-label={`View ${first.title}`}
+        >
+          <Space
+            scene={first.scene}
+            asset={first.entry}
+            label="Entry photograph pending"
+            eager
+          />
+        </Link>
+        <div className="entrance-caption">
+          <span className="sequence">01 / 03</span>
+          <Link href={`/projects/${first.slug}`}>
+            {first.title}
+            <span className="text-link">
+              View study <span aria-hidden="true">↗</span>
+            </span>
+          </Link>
+          <a className="continue" href="#further">
+            Continue below <span aria-hidden="true">↓</span>
           </a>
         </div>
-      </main>
-    </div>
+      </section>
+      <section className="exhibition-intro" id="further">
+        <span className="quiet-label">The exhibition</span>
+        <p>
+          A doorway. A passage.
+          <br />A surface catching light.
+        </p>
+        <span className="intro-note">
+          A proposed reading of the work.
+          <br />
+          All images are abstract placeholders.
+        </span>
+      </section>
+      <section
+        className="project-composition passage-composition"
+        aria-labelledby="second-title"
+      >
+        <Link
+          className="main-space"
+          href={`/projects/${second.slug}`}
+          aria-label={`View ${second.title}`}
+        >
+          <Space
+            scene="passage"
+            asset={second.entry}
+            label="Circulation photograph pending"
+          />
+        </Link>
+        <div className="composition-aside">
+          <span className="sequence">02 / 03</span>
+          <h2 id="second-title">
+            <Link href={`/projects/${second.slug}`}>{second.title}</Link>
+          </h2>
+          <p>{second.theme}</p>
+          <Link className="text-link" href={`/projects/${second.slug}`}>
+            View study <span aria-hidden="true">↗</span>
+          </Link>
+          <Space scene="detail" label="Detail pending" />
+        </div>
+      </section>
+      <section
+        className="project-composition light-composition"
+        aria-labelledby="third-title"
+      >
+        <div className="light-copy">
+          <span className="sequence">03 / 03</span>
+          <h2 id="third-title">
+            <Link href={`/projects/${third.slug}`}>
+              Where light <br />
+              settles
+            </Link>
+          </h2>
+          <p>{third.theme}</p>
+          <Link className="text-link" href={`/projects/${third.slug}`}>
+            View study <span aria-hidden="true">↗</span>
+          </Link>
+        </div>
+        <Link
+          href={`/projects/${third.slug}`}
+          className="main-space"
+          aria-label={`View ${third.title}`}
+        >
+          <Space
+            scene="light"
+            asset={third.entry}
+            label="Daylight photograph pending"
+          />
+        </Link>
+      </section>
+      <div className="exhibition-end">
+        <p>Another way to look.</p>
+        <Link className="text-link" href="/index">
+          Explore the index <span aria-hidden="true">↗</span>
+        </Link>
+      </div>
+    </main>
   );
 }

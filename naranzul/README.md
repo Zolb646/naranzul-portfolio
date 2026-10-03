@@ -1,36 +1,32 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Thresholds
 
-## Getting Started
+An interior-design exhibition built with Next.js App Router, TypeScript, and CSS. All three studies are explicitly marked placeholders. The geometric spatial drawings are not completed projects or generated interior photography.
 
-First, run the development server:
+## Run
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
+```sh
+pnpm install
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+```sh
+pnpm lint
+pnpm exec tsc --noEmit
+pnpm build
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Routes: `/`, `/index`, `/projects/a-study-in-thresholds`, `/projects/the-quiet-passage`, `/projects/where-light-settles`, `/practice`.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Content
 
-## Learn More
+Edit `lib/projects.ts`. Replace the provisional study titles and story notes with verified project information. `ImageAsset` supports source, dimensions, alt text, credit and separate desktop/mobile focal points. The `Space` component renders optimized images when an asset is supplied and an explicitly labelled SVG placeholder otherwise. Add an entry asset and assets to image story blocks; pair blocks accept `asset` and `contextAsset` for the detail and its spatial context. Entry assets also appear on the homepage and index.
 
-To learn more about Next.js, take a look at the following resources:
+Set the verified designer name and email in `practice`. Until an email is supplied, no nonfunctional contact link is shown. Replace the biography and process notes on the practice page. Font licenses are included under `public/fonts`.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Before publishing
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Supply actual photography, permission/credits, project metadata, designer biography and contact details. Review crops on desktop and mobile. Remove draft placeholders before marking a project as publishable. This preview deliberately has `noindex, nofollow` metadata and a disallow-all robots policy. Once content and a real domain are approved, add canonical URLs, project Open Graph images and a sitemap of published projects, then enable indexing. No deployment configuration or domain has been invented.
 
-## Deploy on Vercel
+## Interaction
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The index preview responds to mouse and keyboard focus; mobile uses directly linked images. Selection is stored locally for returning visitors. All essential navigation works without JavaScript. Native scrolling is preserved. The entrance clip reveal is progressive CSS enhancement, with a static fallback and reduced-motion support.
